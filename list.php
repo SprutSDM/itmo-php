@@ -18,7 +18,10 @@
 
 
 	// Запрос к базе данных
-	$query = 'SELECT id_maket, name, ind, name_np, name_author, maket.price AS mp, content, time, maket_press.price AS mpp FROM maket, maket_press, press WHERE id_press = press.id AND id_maket = maket.id ORDER BY name;';
+	$query = 'SELECT id_maket, author.name AS author, ind, name_np, press.name as name, maket.price AS mp, content, time, maket_press.price AS mpp, genre.type AS genrenm
+		FROM maket, maket_press, press, author, genre 
+		WHERE id_press = press.id AND id_maket = maket.id AND genre.id = maket.id_genre AND author.id = maket.id_author
+		ORDER BY name;';
 	$data = mysqli_query($dblink, $query);
   if (!$data) {
     echo("Error request: ".mysqli_error($dblink)."<br>");
@@ -40,9 +43,9 @@
 	}
 	
 	// Название столбцов
-	$titles = array('Press name', 'Index', 'Title', 'Author', 'Unit price, $', 'Content', 'Print price, $', 'Print time, days');
+	$titles = array('Press name', 'Index', 'Title', 'Genre', 'Author', 'Unit price, $', 'Content', 'Print price, $', 'Print time, days');
 	// Ключи к значениям	
-	$keys = array('name_np', 'name_author', 'mp', 'content', 'time', 'mpp');
+	$keys = array('name_np', 'genrenm', 'author', 'mp', 'content', 'time', 'mpp');
 
 	// Вывод названия столбцов
 	mysqli_data_seek($data, 0);

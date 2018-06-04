@@ -3,7 +3,24 @@
 		<form action="edit.php" method="get">
 			<input type="hidden" name="id" value="<?php echo($id); ?>"><br>
 			Title: <input type="text" name="title" value="<?php echo($title); ?>"><br>
-		  	Author: <input type="text" name="author" value="<?php echo($author); ?>"><br>
+		  	Author: <select size="<?php echo(count($data_author)); ?>" name=id_author>
+				<?php
+					while ($row = mysqli_fetch_array($data_author)) {
+						echo("<option");
+						if ($row['id'] == $id_author) echo(" selected");
+						echo(" value=".$row['id'].">".$row['name']."</option>");
+					}		
+				?> 
+				</select><br>
+			Genre: <select size="<?php echo(count($data_genre)); ?>" name=id_genre>
+				<?php
+					while ($row = mysqli_fetch_array($data_genre)) {
+						echo("<option");
+						if ($row['id'] == $id_genre) echo(" selected");
+						echo(" value=".$row['id'].">".$row['type']."</option>");
+					}		
+				?> 
+				</select><br> 
 			Content: <input type="text" name="content" value="<?php echo($content); ?>"><br>
 			Price: <input type="text" name="price" value="<?php echo($price); ?>"><br>
 			<input type="submit">
