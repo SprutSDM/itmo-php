@@ -15,6 +15,7 @@
 	}
 
 	require "connection.php";
+	use_database();
 
 
 	// Запрос к базе данных

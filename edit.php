@@ -1,5 +1,6 @@
 <?php
 	require "connection.php";
+	use_database();
 	$id = $_GET["id"];
 	$id_author = $_GET["id_author"];
 
@@ -16,13 +17,12 @@
 
 	$query = "SELECT * FROM maket WHERE id=$id;";
 	$data = mysqli_fetch_array(mysqli_query($dblink, $query));
-	
 	$query = "SELECT id, name FROM author;";
 	$data_author = mysqli_query($dblink, $query);
 
 	$query = "SELECT id, type FROM genre;";
 	$data_genre = mysqli_query($dblink, $query);
-
+	
 	$id_author = $data['id_author'];
 	$id_genre = $data['id_genre'];
 	$title = $data['name_np'];

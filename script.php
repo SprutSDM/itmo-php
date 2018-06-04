@@ -4,15 +4,7 @@
 	 *  php version = v7.0.28-0ubuntu0.16.04.1
 	 *
 	 */
-  $dbhost = "localhost";
-  $dbuser = "root";
-  $dbpassword = "root";
-  $dblink = mysqli_init();
-  $dbname = "press_test_3";
-  if (!mysqli_real_connect($dblink, $dbhost, $dbuser, $dbpassword)) {
-    echo("Connect Error: ".mysqli_connect_error());
-    exit();
-  }
+	require "connection.php";
 
 
 	function create_table($query) {

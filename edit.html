@@ -9,8 +9,8 @@
 						echo("<option");
 						if ($row['id'] == $id_author) echo(" selected");
 						echo(" value=".$row['id'].">".$row['name']."</option>");
-					}		
-				?> 
+					}
+				?>
 				</select><br>
 			Genre: <select size="<?php echo(count($data_genre)); ?>" name=id_genre>
 				<?php
@@ -19,8 +19,8 @@
 						if ($row['id'] == $id_genre) echo(" selected");
 						echo(" value=".$row['id'].">".$row['type']."</option>");
 					}		
-				?> 
-				</select><br> 
+				?>
+				</select><br>
 			Content: <input type="text" name="content" value="<?php echo($content); ?>"><br>
 			Price: <input type="text" name="price" value="<?php echo($price); ?>"><br>
 			<input type="submit">
